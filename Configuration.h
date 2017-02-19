@@ -18,6 +18,7 @@
 #define devicePassword "523-12-643" //Password
 #define deviceUUID "62F47751-8F26-46BF-9552-8F4238E67D60"   //UUID, for pair verify
 #define controllerRecordsAddress "/var/PHK_controller" //Where to store the client keys
+#define PrintArray(a, x, len) do{if(a){printf("----Array Len:%d\n", len);for (int j = 0; j < len; ++j) {printf("0x%02x,", x[j]);}printf("\n");}}while(0)
 
 //Number of client
 /*

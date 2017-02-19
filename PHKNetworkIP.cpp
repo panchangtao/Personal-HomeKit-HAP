@@ -769,7 +769,8 @@ void connectionInfo::handlePairVerify() {
                     PHKNetworkMessageData data = PHKNetworkMessageData(decryptData, packageLen-16);
                     
                     PHKKeyRecord rec = getControllerKey(data.dataPtrForIndex(1));
-                    
+                    PrintArray(1, data.dataPtrForIndex(1), data.lengthForIndex(1));
+
                     char tempMsg[100];
                     bcopy(controllerPublicKey, tempMsg, 32);
                     bcopy(data.dataPtrForIndex(1), &tempMsg[32], 36);
