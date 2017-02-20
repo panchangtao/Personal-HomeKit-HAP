@@ -767,7 +767,7 @@ void connectionInfo::handlePairVerify() {
                     char *decryptData = new char[packageLen-16];
                     chacha20_decrypt(&chacha20, (const uint8_t *)encryptedData, (uint8_t *)decryptData, packageLen-16);
                     PHKNetworkMessageData data = PHKNetworkMessageData(decryptData, packageLen-16);
-                    
+
                     PHKKeyRecord rec = getControllerKey(data.dataPtrForIndex(1));
                     PrintArray(1, data.dataPtrForIndex(1), data.lengthForIndex(1));
 

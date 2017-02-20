@@ -101,11 +101,11 @@ void removeControllerKey(PHKKeyRecord record) {
     }
 }
 
-PHKKeyRecord getControllerKey(char key[32]) {
+PHKKeyRecord getControllerKey(char key[36]) {
     for (vector<PHKKeyRecord>::iterator it = controllerRecords.begin(); it != controllerRecords.end(); it++) {
-        if (bcmp(key, it->controllerID, 32) == 0) return *it;
+        if (bcmp(key, it->controllerID, 36) == 0) return *it;
     }
     PHKKeyRecord emptyRecord;
-    bzero(emptyRecord.controllerID, 32);
+    bzero(emptyRecord.controllerID, 36);
     return emptyRecord;
 }
