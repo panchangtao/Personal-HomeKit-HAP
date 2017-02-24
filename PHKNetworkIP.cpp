@@ -908,7 +908,7 @@ void connectionInfo::handleAccessoryRequest() {
             //Output return
             char *resultData = 0; unsigned int resultLen = 0;
             handleAccessory(decryptData, msgLen, &resultData, &resultLen, this);
-            
+            printf("resultData:%s\n", resultData);
             //18 = 2(resultLen) + 16(poly1305 verify key)
             char *reply = new char[resultLen+18];
             reply[0] = resultLen%256;
@@ -924,7 +924,7 @@ void connectionInfo::handleAccessoryRequest() {
             
             Poly1305_GenKey((const unsigned char *)temp2, (uint8_t *)reply, resultLen, Type_Data_With_Length, verify);
             memcpy((unsigned char*)&reply[resultLen+2], verify, 16);
-            
+            PrintArray(1,reply,resultLen+18);
             write(subSocket, reply, resultLen+18);
             
             pthread_mutex_unlock(&mutex);

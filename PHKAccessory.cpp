@@ -394,7 +394,8 @@ void handleAccessory(const char *request, unsigned int requestLen, char **reply,
         replyData = new char[replyDataLen+1];
         bcopy(desc.c_str(), replyData, replyDataLen);
         replyData[replyDataLen] = 0;
-    } else if (strcmp(path, "/pairings") == 0) {
+    }
+    else if (strcmp(path, "/pairings") == 0) {
         PHKNetworkMessage msg(request);
         statusCode = 200;
         printf("%d\n", *msg.data.dataPtrForIndex(0));
@@ -431,7 +432,8 @@ void handleAccessory(const char *request, unsigned int requestLen, char **reply,
             returnType = pairingTlv8Type;
             statusCode = 200;
         }
-    } else if (strncmp(path, "/characteristics", 16) == 0){
+    }
+    else if (strncmp(path, "/characteristics", 16) == 0){
         pthread_mutex_lock(&AccessorySet::getInstance().accessoryMutex);
         printf("Characteristics\n");
         if (strncmp(method, "GET", 3) == 0) {
@@ -578,7 +580,8 @@ void handleAccessory(const char *request, unsigned int requestLen, char **reply,
             return;
         }
         pthread_mutex_unlock(&AccessorySet::getInstance().accessoryMutex);
-    } else {
+    }
+    else {
         //Error
 #if HomeKitLog == 1
         printf("Ask for something I don't know\n");
